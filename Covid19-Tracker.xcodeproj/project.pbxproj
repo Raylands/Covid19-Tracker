@@ -60,11 +60,11 @@
 			children = (
 				4B9501FD252DD18B00786628 /* Info.plist */,
 				4B950203252DD1D000786628 /* Support Files */,
-				4B9501F3252DD18900786628 /* main_ViewController.swift */,
 				4B9501F5252DD18900786628 /* Main.storyboard */,
-				4B9501F8252DD18B00786628 /* Assets.xcassets */,
 				4B9501FA252DD18B00786628 /* LaunchScreen.storyboard */,
-				4B950204252DD21400786628 /* Covid_data_model.swift */,
+				4B9501F8252DD18B00786628 /* Assets.xcassets */,
+				4B950206252E06DD00786628 /* Controllers */,
+				4B950207252E06F000786628 /* Models */,
 			);
 			path = "Covid19-Tracker";
 			sourceTree = "<group>";
@@ -76,6 +76,22 @@
 				4B9501EF252DD18900786628 /* AppDelegate.swift */,
 			);
 			path = "Support Files";
+			sourceTree = "<group>";
+		};
+		4B950206252E06DD00786628 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4B9501F3252DD18900786628 /* main_ViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		4B950207252E06F000786628 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4B950204252DD21400786628 /* Covid_data_model.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

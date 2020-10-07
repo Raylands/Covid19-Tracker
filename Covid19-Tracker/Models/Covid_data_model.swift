@@ -16,6 +16,7 @@ enum APIError:String, Error {
 
 struct Covid_Data: Codable {
     var country: String
+    var code: String?
     var confirmed: Int32
     var recovered: Int32
     var critical: Int32

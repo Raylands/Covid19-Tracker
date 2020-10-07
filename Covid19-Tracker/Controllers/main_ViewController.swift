@@ -10,7 +10,8 @@ import UIKit
 
 class main_ViewController: UIViewController {
 
-    var Covid_cases: [Covid_Data]?;
+    var Covid_cases: [Covid_Data]?
+    var dead: [Covid_Data] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +25,14 @@ class main_ViewController: UIViewController {
             case .success(let data):
                 self?.Covid_cases = data
                 for cases in data {
-                    print(cases.country, "-",cases.lastUpdate ?? "No date found.")
+                    print("\(cases.country) (\(cases.code ?? "XX"))","-",cases.lastUpdate ?? "No date found.")
+                    if cases.code == nil /*|| cases.lastUpdate == nil || cases.lastChange == nil*/{
+                        self?.dead.append(cases)
+                    }
+                }
+                print()
+                for item in self!.dead {
+                    print(item.country)
                 }
             }
         }
