@@ -14,7 +14,7 @@ class main_ViewController: UIViewController {
     var Covid_cases: [Covid_Data]?
     var dead: [Covid_Data] = []
     var countries: [String] = []
-    
+    // hello is it working ???
     override func viewDidLoad() {
         super.viewDidLoad()
 
