@@ -22,7 +22,7 @@ struct Covid_Data: Codable {
     var deaths: Int32
     var latitude: Float?
     var longitude: Float?
-    var lastChange: String? //TODO: Fix Data type
+    var lastChange: String?
     var lastUpdate: String?
 }
 
@@ -39,11 +39,7 @@ func getData(url: String, completiton: @escaping(Result<[Covid_Data],APIError>) 
             return
         }
         do{
-            let decoder = JSONDecoder()
-            decoder.dateDecodingStrategy = .iso8601
-            decoder.keyDecodingStrategy = .convertFromSnakeCase
-            
-            let response = try decoder.decode([Covid_Data].self, from: jsonData)
+            let response = try JSONDecoder().decode([Covid_Data].self, from: jsonData)
             completiton(.success(response))
         } catch {
             completiton(.failure(.notAbletoUnpack))
