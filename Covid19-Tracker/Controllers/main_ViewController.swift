@@ -10,7 +10,7 @@ import UIKit
 
 class main_ViewController: UIViewController {
 
-    @IBOutlet weak var TableView: UITableView!
+    @IBOutlet weak var TableView: UITableView! //TODO: TableView implementation
     var Covid_cases: [Covid_Data]?
     var dead: [Covid_Data] = []
     var countries: [String] = []
