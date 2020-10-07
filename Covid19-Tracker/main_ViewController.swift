@@ -24,7 +24,7 @@ class main_ViewController: UIViewController {
             case .success(let data):
                 self?.Covid_cases = data
                 for cases in data {
-                    print(cases.country)
+                    print(cases.country, "-",cases.lastUpdate ?? "No date found.")
                 }
             }
         }

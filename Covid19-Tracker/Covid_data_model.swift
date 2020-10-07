@@ -20,8 +20,10 @@ struct Covid_Data: Codable {
     var recovered: Int32
     var critical: Int32
     var deaths: Int32
-    //var lastChange: String //TODO: Fix Data type
-    //var lastUpdate: String
+    var latitude: Float?
+    var longitude: Float?
+    var lastChange: String? //TODO: Fix Data type
+    var lastUpdate: String?
 }
 
 
@@ -37,7 +39,11 @@ func getData(url: String, completiton: @escaping(Result<[Covid_Data],APIError>) 
             return
         }
         do{
-            let response = try JSONDecoder().decode([Covid_Data].self, from: jsonData)
+            let decoder = JSONDecoder()
+            decoder.dateDecodingStrategy = .iso8601
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
+            
+            let response = try decoder.decode([Covid_Data].self, from: jsonData)
             completiton(.success(response))
         } catch {
             completiton(.failure(.notAbletoUnpack))
@@ -47,6 +53,21 @@ func getData(url: String, completiton: @escaping(Result<[Covid_Data],APIError>) 
 }
 
 /*
+ [
+    {
+     country        string
+     confirmed      integer
+     recovered      integer
+     critical       integer
+     deaths         integer
+     latitude       number($float)
+     longitude      number($float)
+     lastChange     string($date-time)
+     lastUpdate     string($date-time)
+    }
+ ]
+ 
+ 
  {
    "country": "Afghanistan",
    "code": "AF",
