@@ -12,6 +12,7 @@ enum APIError:String, Error {
     case invalidURL
     case noDataReceived
     case notAbletoUnpack
+    case unknownError
 }
 
 struct Covid_Data: Codable {
@@ -34,20 +35,71 @@ func getData(url: String, completiton: @escaping(Result<[Covid_Data],APIError>) 
         completiton(.failure(.invalidURL))
         return
     }
+    
+    let semaphore: DispatchSemaphore = DispatchSemaphore(value: 0)
     URLSession.shared.dataTask(with: url_tmp) {data, _, _ in
         guard let jsonData = data else {
             completiton(.failure(.noDataReceived))
+            semaphore.signal()
             return
         }
         do{
             let response = try JSONDecoder().decode([Covid_Data].self, from: jsonData)
             completiton(.success(response))
+            semaphore.signal()
+            return
         } catch {
             completiton(.failure(.notAbletoUnpack))
+            semaphore.signal()
+            return
         }
         
     }.resume()
+    semaphore.wait()
 }
+
+/*
+func getData_old(url: String) throws -> [Covid_Data]? {
+    
+    var result: [Covid_Data]?
+    
+    guard let url_tmp = URL.init(string: url) else {
+        throw APIError.invalidURL
+    }
+    
+    let semaphore: DispatchSemaphore = DispatchSemaphore(value: 0)
+    
+    var URLerror: APIError?
+    URLSession.shared.dataTask(with: url_tmp) {data, _, _ in
+        guard let jsonData = data else {
+            URLerror = APIError.noDataReceived
+            semaphore.signal()
+            return
+        }
+        do{
+            let response = try JSONDecoder().decode([Covid_Data].self, from: jsonData)
+            result = response
+            semaphore.signal()
+            return
+        } catch {
+            URLerror = APIError.notAbletoUnpack
+            semaphore.signal()
+            return
+        }
+        
+    }.resume()
+    
+    semaphore.wait()
+    
+    if URLerror != nil {
+        throw URLerror!
+    } else if result == nil {
+        throw APIError.unknownError
+    }
+    
+    return result
+}
+ */
 
 /*
  [

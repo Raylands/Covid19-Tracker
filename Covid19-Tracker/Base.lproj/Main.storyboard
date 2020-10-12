@@ -1,70 +1,112 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XdR-cW-zTm">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Main View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Covid-Tracker-->
+        <scene sceneID="If6-24-1Jq">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="main_ViewController" customModule="Covid19_Tracker" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                <collectionViewController interfaceStyle="dark" id="M33-AJ-j0F" customClass="Countries_CollectionViewController" customModule="Covid19_Tracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="bwx-Hz-GjU">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="CKc-Pl-XIi">
-                                <rect key="frame" x="0.0" y="44" width="414" height="56"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2pm-Ch-RCA">
-                                <rect key="frame" x="0.0" y="100" width="414" height="762"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="86" id="Wag-8t-3xU">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="86"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Wag-8t-3xU" id="ROg-JZ-88h">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="86"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Country" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e04-G1-TVc" userLabel="Country label">
-                                                    <rect key="frame" x="20" y="11" width="62" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="e04-G1-TVc" firstAttribute="leading" secondItem="ROg-JZ-88h" secondAttribute="leadingMargin" id="29D-JN-kEy"/>
-                                                <constraint firstItem="e04-G1-TVc" firstAttribute="top" secondItem="ROg-JZ-88h" secondAttribute="topMargin" id="ADK-Sg-OU5"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
-                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="2pm-Ch-RCA" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="DC0-eG-iXP"/>
-                            <constraint firstItem="CKc-Pl-XIi" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="I9u-fm-4Pd"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="2pm-Ch-RCA" secondAttribute="bottom" id="SN8-l9-SqW"/>
-                            <constraint firstItem="CKc-Pl-XIi" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="aEM-s2-7un"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="2pm-Ch-RCA" secondAttribute="trailing" id="at0-AB-dQh"/>
-                            <constraint firstItem="2pm-Ch-RCA" firstAttribute="top" secondItem="CKc-Pl-XIi" secondAttribute="bottom" id="ffQ-gy-8YY"/>
-                            <constraint firstItem="CKc-Pl-XIi" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="ojT-PD-QqO"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                    </view>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Kp1-SY-1cU">
+                            <size key="itemSize" width="175" height="130"/>
+                            <size key="headerReferenceSize" width="50" height="50"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="20" minY="10" maxX="20" maxY="10"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Country_proto" id="lqD-kS-wJX" customClass="CountryCell_CollectionViewCell" customModule="Covid19_Tracker" customModuleProvider="target">
+                                <rect key="frame" x="20" y="60" width="175" height="130"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="n1P-lI-aLg" customClass="CountryCell_CollectionViewCell" customModule="Covid19_Tracker" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="175" height="130"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square.and.arrow.up.fill" catalog="system" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RsV-6o-NkM">
+                                            <rect key="frame" x="78" y="54" width="19" height="21"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Country" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mPz-yU-VBC">
+                                            <rect key="frame" x="10" y="10" width="62" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="RsV-6o-NkM" firstAttribute="centerY" secondItem="n1P-lI-aLg" secondAttribute="centerY" id="XtY-Tc-uVc"/>
+                                        <constraint firstItem="RsV-6o-NkM" firstAttribute="centerX" secondItem="n1P-lI-aLg" secondAttribute="centerX" id="Yhg-dE-GwI"/>
+                                        <constraint firstItem="mPz-yU-VBC" firstAttribute="leading" secondItem="n1P-lI-aLg" secondAttribute="leading" constant="10" id="gQd-ep-m9s"/>
+                                        <constraint firstItem="mPz-yU-VBC" firstAttribute="top" secondItem="n1P-lI-aLg" secondAttribute="top" constant="10" id="oAd-dr-X8w"/>
+                                    </constraints>
+                                </collectionViewCellContentView>
+                                <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                                <connections>
+                                    <outlet property="Country_label" destination="mPz-yU-VBC" id="iGT-vM-c4f"/>
+                                    <outlet property="Flag_image" destination="RsV-6o-NkM" id="io2-ip-uX8"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SearchBar" id="u1H-8w-iqN" customClass="SearchBarView" customModule="Covid19_Tracker" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="A6d-oD-wtX">
+                                    <rect key="frame" x="0.0" y="0.0" width="0.0" height="50"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </searchBar>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="A6d-oD-wtX" firstAttribute="top" secondItem="u1H-8w-iqN" secondAttribute="top" id="6J7-f7-GXy"/>
+                                <constraint firstAttribute="bottom" secondItem="A6d-oD-wtX" secondAttribute="bottom" id="YAS-hE-Qpl"/>
+                                <constraint firstAttribute="trailing" secondItem="A6d-oD-wtX" secondAttribute="trailing" id="aer-wf-Zcp"/>
+                                <constraint firstItem="A6d-oD-wtX" firstAttribute="leading" secondItem="u1H-8w-iqN" secondAttribute="leading" id="o2k-vm-2G9"/>
+                            </constraints>
+                            <connections>
+                                <outlet property="searchBar" destination="A6d-oD-wtX" id="6pf-Gq-wcb"/>
+                            </connections>
+                        </collectionReusableView>
+                        <connections>
+                            <outlet property="dataSource" destination="M33-AJ-j0F" id="QXs-x3-vQZ"/>
+                            <outlet property="delegate" destination="M33-AJ-j0F" id="7hF-Cb-XVA"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" title="Covid-Tracker" id="wAE-yN-MuE"/>
                     <connections>
-                        <outlet property="TableView" destination="2pm-Ch-RCA" id="G5U-Sq-zZ8"/>
+                        <outlet property="Countires_CollectionView" destination="bwx-Hz-GjU" id="hMq-N8-KPE"/>
                     </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="493-Ty-pew" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="131.8840579710145" y="138.61607142857142"/>
+            <point key="canvasLocation" x="1981.1594202898552" y="86.383928571428569"/>
+        </scene>
+        <!--Main-->
+        <scene sceneID="kKL-E1-p6h">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="XdR-cW-zTm" userLabel="Main" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="Kas-66-8Vh"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="XhW-1J-iQT">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="M33-AJ-j0F" kind="relationship" relationship="rootViewController" id="ESO-BY-6dB"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bq9-Am-6of" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1071.0144927536232" y="86.383928571428569"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="square.and.arrow.up.fill" catalog="system" width="115" height="128"/>
+    </resources>
 </document>
