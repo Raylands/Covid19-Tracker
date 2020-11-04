@@ -1,8 +1,8 @@
 //
-//  Countries_CollectionViewController.swift
+//  Countries_ViewController.swift
 //  Covid19-Tracker
 //
-//  Created by Marco Exner on 11.10.20.
+//  Created by Marco Exner on 04.11.20.
 //  Copyright © 2020 Marco Exner. All rights reserved.
 //
 
@@ -11,10 +11,10 @@ import UIKit
 private let reuseIdentifier = "Country_proto"
 private let API_URL_All_Countires = "https://covid19-api.com/country/all?format=json"
 
-class Countries_CollectionViewController: UICollectionViewController, UISearchBarDelegate {
+class Countries_ViewController: UIViewController, UISearchBarDelegate {
 
-    @IBOutlet var Countires_CollectionView: UICollectionView!
-    
+    @IBOutlet weak var Search_Bar: UISearchBar!
+    @IBOutlet var Countries_CollectionView: UICollectionView!
     
     var Covid_cases_all: [Covid_Data] = []
     var Covid_cases: [Covid_Data] = []
@@ -26,8 +26,10 @@ class Countries_CollectionViewController: UICollectionViewController, UISearchBa
         super.viewDidLoad()
         navigationItem.title = "Covid-Tracker"
         
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+        Countries_CollectionView.delegate = self;
+        Countries_CollectionView.dataSource = self;
+        
+        Search_Bar.delegate = self;
         
         getData(url: API_URL_All_Countires) {
             [weak self] result in
@@ -46,7 +48,7 @@ class Countries_CollectionViewController: UICollectionViewController, UISearchBa
             }
         }
         Covid_cases = Covid_cases_all
-        Countires_CollectionView.reloadData()
+        Countries_CollectionView.reloadData()
     }
 
     /*
@@ -60,19 +62,22 @@ class Countries_CollectionViewController: UICollectionViewController, UISearchBa
     */
 
     // MARK: UICollectionViewDataSource
+}
 
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+extension Countries_ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         
         return 1
     }
 
 
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         return self.Covid_cases.count
     }
 
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! CountryCell_CollectionViewCell
     
         // Configure the cell
@@ -85,17 +90,6 @@ class Countries_CollectionViewController: UICollectionViewController, UISearchBa
         return cell
     }
 
-    // MARK: UICollectionViewDelegate
-
-    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-     
-        let searchView: SearchBarView = Countires_CollectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "SearchBar", for: indexPath) as! SearchBarView
-        
-        searchView.searchBar.delegate = self
-        return searchView
-    }
-
-         
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         self.Covid_cases.removeAll()
                  
@@ -109,38 +103,6 @@ class Countries_CollectionViewController: UICollectionViewController, UISearchBa
             self.Covid_cases = self.Covid_cases_all
         }
         
-        self.Countires_CollectionView.reloadData()
+        self.Countries_CollectionView.reloadData()
     }
-    
-
-    
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
-    
-    }
-    */
-
 }
