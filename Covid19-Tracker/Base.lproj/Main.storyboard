@@ -34,10 +34,10 @@
                                     <inset key="sectionInset" minX="20" minY="10" maxX="20" maxY="10"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Country_proto" id="1EF-uE-Vo3" customClass="CountryCell_CollectionViewCell" customModule="Covid19_Tracker" customModuleProvider="target">
+                                    <collectionViewCell clipsSubviews="YES" contentMode="center" reuseIdentifier="Country_proto" id="1EF-uE-Vo3" customClass="CountryCell_CollectionViewCell" customModule="Covid19_Tracker" customModuleProvider="target">
                                         <rect key="frame" x="20" y="10" width="175" height="130"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="gq5-AV-X8y" customClass="CountryCell_CollectionViewCell" customModule="Covid19_Tracker" customModuleProvider="target">
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="gq5-AV-X8y" customClass="CountryCell_CollectionViewCell" customModule="Covid19_Tracker" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="175" height="130"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>

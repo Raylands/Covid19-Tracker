@@ -79,7 +79,6 @@ extension Countries_ViewController: UICollectionViewDelegate, UICollectionViewDa
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! CountryCell_CollectionViewCell
-    
         // Configure the cell
         
         cell.layer.cornerRadius = 10
@@ -90,6 +89,11 @@ extension Countries_ViewController: UICollectionViewDelegate, UICollectionViewDa
         return cell
     }
 
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath) as! CountryCell_CollectionViewCell
+        print("You selected cell \(cell.Country_label.text!)!")
+    }
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         self.Covid_cases.removeAll()
                  
