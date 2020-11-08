@@ -1,8 +1,8 @@
 //
-//  CountryCell_CollectionViewCell.swift
+//  File.swift
 //  Covid19-Tracker
 //
-//  Created by Marco Exner on 11.10.20.
+//  Created by Marco Exner on 08.11.20.
 //  Copyright © 2020 Marco Exner. All rights reserved.
 //
 
