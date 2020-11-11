@@ -7,19 +7,18 @@
 //
 
 import UIKit
+import Foundation
 
 private let reuseIdentifier = "Country_proto"
 private let API_URL_All_Countires = "https://covid19-api.com/country/all?format=json"
 
-class Countries_ViewController: UIViewController, UISearchBarDelegate {
+class Countries_ViewController: UIViewController {
 
     @IBOutlet weak var Search_Bar: UISearchBar!
     @IBOutlet var Countries_CollectionView: UICollectionView!
     
     var Covid_cases_all: [Covid_Data] = []
     var Covid_cases: [Covid_Data] = []
-    var dead: [Covid_Data] = []
-    var countries: [String] = []
     
     override func viewDidLoad() {
             
@@ -30,6 +29,37 @@ class Countries_ViewController: UIViewController, UISearchBarDelegate {
         Countries_CollectionView.dataSource = self;
         
         Search_Bar.delegate = self;
+        
+        /*guard let url_tmp = URL.init(string: API_URL_All_Countires) else {
+            return
+        }
+        
+        URLSession.shared.dataTask(with: url_tmp, completionHandler: {data, abd, abc in
+            guard let jsonData = data else {
+                return
+            }
+            do{
+                let response = try JSONDecoder().decode([Covid_Data].self, from: jsonData)
+                print(response[0].country)
+                print("Done")
+                DispatchQueue.main.async {
+                    print("From main thread: \(response[0].country)")
+                    self.Covid_cases = response
+                    self.Countries_CollectionView.reloadData()
+                }
+                //return
+            } catch {
+                //return
+            }
+            
+            
+            
+            print("Data received!")
+        
+            
+        }).resume()*/
+        
+        print("After JSON")
         
         getData(url: API_URL_All_Countires) {
             [weak self] result in
@@ -42,29 +72,20 @@ class Countries_ViewController: UIViewController, UISearchBarDelegate {
                     // Cleanse data from Countries without country code
                     if cases.code != nil /*|| cases.lastUpdate != nil || cases.lastChange != nil*/{
                         self?.Covid_cases_all.append(cases)
+                        
                     }
                 }
+                self?.Covid_cases = self?.Covid_cases_all as! [Covid_Data]
+                self?.Countries_CollectionView.reloadData()
                 break
             }
         }
-        Covid_cases = Covid_cases_all
-        Countries_CollectionView.reloadData()
+
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-    // MARK: UICollectionViewDataSource
 }
 
-extension Countries_ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension Countries_ViewController: UICollectionViewDelegate, UICollectionViewDataSource,  UISearchBarDelegate {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         

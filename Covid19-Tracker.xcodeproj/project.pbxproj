@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4B4EC3DD25580B6B0080BD29 /* SearchBar_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4B980825347F3400FF0C46 /* SearchBar_View.swift */; };
 		4B4EC3DF25580C650080BD29 /* CountryCell_CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4EC3DE25580C650080BD29 /* CountryCell_CollectionViewCell.swift */; };
 		4B4EC3E1255830700080BD29 /* Details_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4EC3E0255830700080BD29 /* Details_ViewController.swift */; };
 		4B4EC3E62558328D0080BD29 /* DetailsCell_CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4EC3E52558328C0080BD29 /* DetailsCell_CollectionViewCell.swift */; };
@@ -21,7 +20,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4B4B980825347F3400FF0C46 /* SearchBar_View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar_View.swift; sourceTree = "<group>"; };
 		4B4EC3DE25580C650080BD29 /* CountryCell_CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCell_CollectionViewCell.swift; sourceTree = "<group>"; };
 		4B4EC3E0255830700080BD29 /* Details_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Details_ViewController.swift; sourceTree = "<group>"; };
 		4B4EC3E52558328C0080BD29 /* DetailsCell_CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsCell_CollectionViewCell.swift; sourceTree = "<group>"; };
@@ -50,7 +48,6 @@
 		4B4EC3DB255313800080BD29 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				4B4B980825347F3400FF0C46 /* SearchBar_View.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -199,7 +196,6 @@
 				4B4EC3E62558328D0080BD29 /* DetailsCell_CollectionViewCell.swift in Sources */,
 				4B9501F2252DD18900786628 /* SceneDelegate.swift in Sources */,
 				4B4EC3E1255830700080BD29 /* Details_ViewController.swift in Sources */,
-				4B4EC3DD25580B6B0080BD29 /* SearchBar_View.swift in Sources */,
 				4B950205252DD21400786628 /* Covid_data_Model.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

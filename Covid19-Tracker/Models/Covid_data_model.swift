@@ -36,26 +36,26 @@ func getData(url: String, completiton: @escaping(Result<[Covid_Data],APIError>) 
         return
     }
     
-    let semaphore: DispatchSemaphore = DispatchSemaphore(value: 0)
     URLSession.shared.dataTask(with: url_tmp) {data, _, _ in
         guard let jsonData = data else {
             completiton(.failure(.noDataReceived))
-            semaphore.signal()
+
             return
         }
         do{
             let response = try JSONDecoder().decode([Covid_Data].self, from: jsonData)
+            DispatchQueue.main.async {
             completiton(.success(response))
-            semaphore.signal()
+            }
+
             return
         } catch {
             completiton(.failure(.notAbletoUnpack))
-            semaphore.signal()
+
             return
         }
         
     }.resume()
-    semaphore.wait()
 }
 
 /*
