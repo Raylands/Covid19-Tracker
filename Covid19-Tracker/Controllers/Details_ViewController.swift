@@ -9,10 +9,8 @@
 import UIKit
 
 class Details_ViewController: UIViewController {
-
+    
     override func viewDidLoad() {
-        let main = Countries_ViewController()
-        
         
         super.viewDidLoad()
 
@@ -20,25 +18,30 @@ class Details_ViewController: UIViewController {
     }
     
 }
-    extension Details_ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        
+extension Details_ViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
-
-
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        return 3
-    }
-
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Details_proto", for: indexPath) as! DetailsCell_CollectionViewCell
-        // Configure the cell
+        var identifier:Int = 0
         
-        cell.layer.cornerRadius = 10
-        cell.layer.masksToBounds = true
+        for country in SharedData.Covid_cases_all {
+            identifier += 1
+        
+            if country.country.elementsEqual(SharedData.CurrentCountry!) {
+                break
+            }
+        }
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "StatsCell", for: indexPath) as! DetailsCell_TableViewCell
+        
+        cell.confirmed_Total_Amount.text = String(SharedData.Covid_cases_all[identifier].confirmed)
+        
+        cell.Recovered_Total_Amount.text = String(SharedData.Covid_cases_all[identifier].recovered)
+        
+        cell.Deaths_Total_Amount.text = String(SharedData.Covid_cases_all[identifier].deaths)
         
         return cell
     }

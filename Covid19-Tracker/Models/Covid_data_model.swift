@@ -46,7 +46,7 @@ func getData(url: String, completiton: @escaping(Result<[Covid_Data],APIError>) 
             let response = try JSONDecoder().decode([Covid_Data].self, from: jsonData)
             DispatchQueue.main.async {
             completiton(.success(response))
-            }
+           	}
 
             return
         } catch {

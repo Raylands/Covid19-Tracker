@@ -3,10 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B10C4DA2565305700698055 /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 4B10C4D92565305700698055 /* Charts */; };
+		4B10C4E525653F4200698055 /* SharedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B10C4E425653F4200698055 /* SharedData.swift */; };
 		4B4EC3DF25580C650080BD29 /* CountryCell_CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4EC3DE25580C650080BD29 /* CountryCell_CollectionViewCell.swift */; };
 		4B4EC3E1255830700080BD29 /* Details_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4EC3E0255830700080BD29 /* Details_ViewController.swift */; };
 		4B4EC3E62558328D0080BD29 /* DetailsCell_CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4EC3E52558328C0080BD29 /* DetailsCell_CollectionViewCell.swift */; };
@@ -16,10 +18,11 @@
 		4B9501F7252DD18900786628 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B9501F5252DD18900786628 /* Main.storyboard */; };
 		4B9501F9252DD18B00786628 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B9501F8252DD18B00786628 /* Assets.xcassets */; };
 		4B9501FC252DD18B00786628 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B9501FA252DD18B00786628 /* LaunchScreen.storyboard */; };
-		4B950205252DD21400786628 /* Covid_data_Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B950204252DD21400786628 /* Covid_data_Model.swift */; };
+		4B950205252DD21400786628 /* Covid_data_model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B950204252DD21400786628 /* Covid_data_model.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4B10C4E425653F4200698055 /* SharedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedData.swift; sourceTree = "<group>"; };
 		4B4EC3DE25580C650080BD29 /* CountryCell_CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCell_CollectionViewCell.swift; sourceTree = "<group>"; };
 		4B4EC3E0255830700080BD29 /* Details_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Details_ViewController.swift; sourceTree = "<group>"; };
 		4B4EC3E52558328C0080BD29 /* DetailsCell_CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsCell_CollectionViewCell.swift; sourceTree = "<group>"; };
@@ -31,7 +34,7 @@
 		4B9501F8252DD18B00786628 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4B9501FB252DD18B00786628 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4B9501FD252DD18B00786628 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4B950204252DD21400786628 /* Covid_data_Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Covid_data_Model.swift; sourceTree = "<group>"; };
+		4B950204252DD21400786628 /* Covid_data_model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Covid_data_model.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,26 +42,35 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B10C4DA2565305700698055 /* Charts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4B4EC3DB255313800080BD29 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		4B4EC3DC2553139E0080BD29 /* Special */ = {
+		4B10C4E12565366E00698055 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
 				4B4EC3DE25580C650080BD29 /* CountryCell_CollectionViewCell.swift */,
 				4B4EC3E52558328C0080BD29 /* DetailsCell_CollectionViewCell.swift */,
 			);
-			path = Special;
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		4B10C4E325653F3000698055 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				4B10C4E425653F4200698055 /* SharedData.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		4B4EC3DB255313800080BD29 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		4B9501E3252DD18900786628 = {
@@ -80,6 +92,7 @@
 		4B9501EE252DD18900786628 /* Covid19-Tracker */ = {
 			isa = PBXGroup;
 			children = (
+				4B10C4E325653F3000698055 /* Data */,
 				4B9501FD252DD18B00786628 /* Info.plist */,
 				4B950203252DD1D000786628 /* Support Files */,
 				4B9501F5252DD18900786628 /* Main.storyboard */,
@@ -88,7 +101,7 @@
 				4B950206252E06DD00786628 /* Controllers */,
 				4B4EC3DB255313800080BD29 /* Views */,
 				4B950207252E06F000786628 /* Models */,
-				4B4EC3DC2553139E0080BD29 /* Special */,
+				4B10C4E12565366E00698055 /* Cells */,
 			);
 			path = "Covid19-Tracker";
 			sourceTree = "<group>";
@@ -114,7 +127,7 @@
 		4B950207252E06F000786628 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				4B950204252DD21400786628 /* Covid_data_Model.swift */,
+				4B950204252DD21400786628 /* Covid_data_model.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -135,6 +148,9 @@
 			dependencies = (
 			);
 			name = "Covid19-Tracker";
+			packageProductDependencies = (
+				4B10C4D92565305700698055 /* Charts */,
+			);
 			productName = "Covid19-Tracker";
 			productReference = 4B9501EC252DD18900786628 /* Covid19-Tracker.app */;
 			productType = "com.apple.product-type.application";
@@ -163,6 +179,9 @@
 				Base,
 			);
 			mainGroup = 4B9501E3252DD18900786628;
+			packageReferences = (
+				4B10C4D82565305700698055 /* XCRemoteSwiftPackageReference "Charts" */,
+			);
 			productRefGroup = 4B9501ED252DD18900786628 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -191,12 +210,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B5724E02552EF7D0013E40D /* Countries_ViewController.swift in Sources */,
+				4B10C4E525653F4200698055 /* SharedData.swift in Sources */,
 				4B4EC3DF25580C650080BD29 /* CountryCell_CollectionViewCell.swift in Sources */,
 				4B9501F0252DD18900786628 /* AppDelegate.swift in Sources */,
 				4B4EC3E62558328D0080BD29 /* DetailsCell_CollectionViewCell.swift in Sources */,
 				4B9501F2252DD18900786628 /* SceneDelegate.swift in Sources */,
 				4B4EC3E1255830700080BD29 /* Details_ViewController.swift in Sources */,
-				4B950205252DD21400786628 /* Covid_data_Model.swift in Sources */,
+				4B950205252DD21400786628 /* Covid_data_model.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,6 +245,7 @@
 		4B9501FE252DD18B00786628 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -278,6 +299,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -285,6 +307,7 @@
 		4B9501FF252DD18B00786628 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -331,6 +354,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -392,6 +416,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		4B10C4D82565305700698055 /* XCRemoteSwiftPackageReference "Charts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/danielgindi/Charts";
+			requirement = {
+				kind = exactVersion;
+				version = 3.4.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4B10C4D92565305700698055 /* Charts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4B10C4D82565305700698055 /* XCRemoteSwiftPackageReference "Charts" */;
+			productName = Charts;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4B9501E4252DD18900786628 /* Project object */;
 }
