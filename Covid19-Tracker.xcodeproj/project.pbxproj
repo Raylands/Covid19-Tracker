@@ -19,6 +19,7 @@
 		4B9501F9252DD18B00786628 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B9501F8252DD18B00786628 /* Assets.xcassets */; };
 		4B9501FC252DD18B00786628 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B9501FA252DD18B00786628 /* LaunchScreen.storyboard */; };
 		4B950205252DD21400786628 /* Covid_data_model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B950204252DD21400786628 /* Covid_data_model.swift */; };
+		A8C7DDEB256C9E2E002C7500 /* PieChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C7DDEA256C9E2E002C7500 /* PieChart.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		4B9501FB252DD18B00786628 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4B9501FD252DD18B00786628 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4B950204252DD21400786628 /* Covid_data_model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Covid_data_model.swift; sourceTree = "<group>"; };
+		A8C7DDEA256C9E2E002C7500 /* PieChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChart.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 			isa = PBXGroup;
 			children = (
 				4B10C4E425653F4200698055 /* SharedData.swift */,
+				A8C7DDEA256C9E2E002C7500 /* PieChart.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -209,6 +212,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8C7DDEB256C9E2E002C7500 /* PieChart.swift in Sources */,
 				4B5724E02552EF7D0013E40D /* Countries_ViewController.swift in Sources */,
 				4B10C4E525653F4200698055 /* SharedData.swift in Sources */,
 				4B4EC3DF25580C650080BD29 /* CountryCell_CollectionViewCell.swift in Sources */,
