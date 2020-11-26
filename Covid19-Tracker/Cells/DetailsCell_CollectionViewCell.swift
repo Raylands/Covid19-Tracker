@@ -11,8 +11,13 @@ import UIKit
 class DetailsCell_TableViewCell: UITableViewCell {
     @IBOutlet weak var confirmed_Title: UILabel!
     @IBOutlet weak var confirmed_Total_Amount: UILabel!
+    @IBOutlet weak var confirmed_Change: UILabel!
+    
     @IBOutlet weak var Recovered_Title: UILabel!
     @IBOutlet weak var Recovered_Total_Amount: UILabel!
+    @IBOutlet weak var Recovered_Change: UILabel!
+    
     @IBOutlet weak var Deaths_Title: UILabel!
     @IBOutlet weak var Deaths_Total_Amount: UILabel!
+    @IBOutlet weak var Deaths_Change: UILabel!
 }
