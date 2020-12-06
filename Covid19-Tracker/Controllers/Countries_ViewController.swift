@@ -120,4 +120,10 @@ extension Countries_ViewController: UICollectionViewDelegate, UICollectionViewDa
         
         self.Countries_CollectionView.reloadData()
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let backItem = UIBarButtonItem()
+        backItem.title = "Back"
+        navigationItem.backBarButtonItem = backItem // This will show in the next view controller being pushed
+    }
 }

@@ -11,7 +11,8 @@
 		4B10C4E525653F4200698055 /* SharedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B10C4E425653F4200698055 /* SharedData.swift */; };
 		4B4EC3DF25580C650080BD29 /* CountryCell_CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4EC3DE25580C650080BD29 /* CountryCell_CollectionViewCell.swift */; };
 		4B4EC3E1255830700080BD29 /* Details_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4EC3E0255830700080BD29 /* Details_ViewController.swift */; };
-		4B4EC3E62558328D0080BD29 /* DetailsCell_CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4EC3E52558328C0080BD29 /* DetailsCell_CollectionViewCell.swift */; };
+		4B4EC3E62558328D0080BD29 /* DetailsCell_TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4EC3E52558328C0080BD29 /* DetailsCell_TableViewCell.swift */; };
+		4B52D338257D3CC300CDB4CC /* CurrentChart_TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B52D337257D3CC300CDB4CC /* CurrentChart_TableViewCell.swift */; };
 		4B5724E02552EF7D0013E40D /* Countries_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5724DF2552EF7D0013E40D /* Countries_ViewController.swift */; };
 		4B9501F0252DD18900786628 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9501EF252DD18900786628 /* AppDelegate.swift */; };
 		4B9501F2252DD18900786628 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9501F1252DD18900786628 /* SceneDelegate.swift */; };
@@ -25,7 +26,8 @@
 		4B10C4E425653F4200698055 /* SharedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedData.swift; sourceTree = "<group>"; };
 		4B4EC3DE25580C650080BD29 /* CountryCell_CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCell_CollectionViewCell.swift; sourceTree = "<group>"; };
 		4B4EC3E0255830700080BD29 /* Details_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Details_ViewController.swift; sourceTree = "<group>"; };
-		4B4EC3E52558328C0080BD29 /* DetailsCell_CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsCell_CollectionViewCell.swift; sourceTree = "<group>"; };
+		4B4EC3E52558328C0080BD29 /* DetailsCell_TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsCell_TableViewCell.swift; sourceTree = "<group>"; };
+		4B52D337257D3CC300CDB4CC /* CurrentChart_TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentChart_TableViewCell.swift; sourceTree = "<group>"; };
 		4B5724DF2552EF7D0013E40D /* Countries_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Countries_ViewController.swift; sourceTree = "<group>"; };
 		4B9501EC252DD18900786628 /* Covid19-Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Covid19-Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B9501EF252DD18900786628 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -53,7 +55,8 @@
 			isa = PBXGroup;
 			children = (
 				4B4EC3DE25580C650080BD29 /* CountryCell_CollectionViewCell.swift */,
-				4B4EC3E52558328C0080BD29 /* DetailsCell_CollectionViewCell.swift */,
+				4B4EC3E52558328C0080BD29 /* DetailsCell_TableViewCell.swift */,
+				4B52D337257D3CC300CDB4CC /* CurrentChart_TableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -213,10 +216,11 @@
 				4B10C4E525653F4200698055 /* SharedData.swift in Sources */,
 				4B4EC3DF25580C650080BD29 /* CountryCell_CollectionViewCell.swift in Sources */,
 				4B9501F0252DD18900786628 /* AppDelegate.swift in Sources */,
-				4B4EC3E62558328D0080BD29 /* DetailsCell_CollectionViewCell.swift in Sources */,
+				4B4EC3E62558328D0080BD29 /* DetailsCell_TableViewCell.swift in Sources */,
 				4B9501F2252DD18900786628 /* SceneDelegate.swift in Sources */,
 				4B4EC3E1255830700080BD29 /* Details_ViewController.swift in Sources */,
 				4B950205252DD21400786628 /* Covid_data_Model.swift in Sources */,
+				4B52D338257D3CC300CDB4CC /* CurrentChart_TableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
