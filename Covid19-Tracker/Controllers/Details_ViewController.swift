@@ -50,14 +50,16 @@ extension Details_ViewController: UITableViewDelegate, UITableViewDataSource {
         else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "CurrentChartCell", for: indexPath) as! CurrentChart_TableViewCell
             
+            // Only with strong Outlet! Removing this line and/or using a weak outlet will crash
+            cell.current_pichart = PieChartView()
+            
             cell.current_pichart.chartDescription?.enabled = false
             cell.current_pichart.drawHoleEnabled = false
             cell.current_pichart.rotationAngle = 0
-            //pieView.rotationEnabled = false
             cell.current_pichart.isUserInteractionEnabled = false
             
-            //pieView.legend.enabled = false
             
+            // RANDOM TEST DATA
             var entries: [PieChartDataEntry] = Array()
             entries.append(PieChartDataEntry(value: 50.0, label: "Takeout"))
             entries.append(PieChartDataEntry(value: 30.0, label: "Healthy Food"))
@@ -70,7 +72,7 @@ extension Details_ViewController: UITableViewDelegate, UITableViewDataSource {
             dataSet.drawValuesEnabled = false
             
             cell.current_pichart.data = PieChartData(dataSet: dataSet)
-            
+            //cell.current_pichart.reloadInputViews()
             return cell
         }
         
