@@ -10,8 +10,8 @@ import UIKit
 import Foundation
 
 private let reuseIdentifier = "Country_proto"
-private let API_URL_All_Countires = "https://covid19-api.com/country/all?format=json"
-
+private let API_URL_All_COUNTRIES_TODAY = "https://disease.sh/v3/covid-19/countries?allowNull=false"
+private let API_URL_All_COUNTRIES_YESTERDAY = "https://disease.sh/v3/covid-19/countries?yesterday=true&allowNull=false"
 class Countries_ViewController: UIViewController {
 
     @IBOutlet weak var Search_Bar: UISearchBar!
@@ -27,28 +27,42 @@ class Countries_ViewController: UIViewController {
         
         Search_Bar.delegate = self;
         
-        getData(url: API_URL_All_Countires) {
+        getData(url: API_URL_All_COUNTRIES_TODAY) {
             [weak self] result in
             switch result {
             case .failure(let error):
-                print(error)
+                debugPrint(error)
                 break
             case .success(let data):
                 for cases in data {
-                    // Cleanse data from Countries without country code
-                    if cases.code != nil /*|| cases.lastUpdate != nil || cases.lastChange != nil*/{
+                    // filter invalid data
+                    if cases.countryInfo._id != nil && cases.countryInfo.iso2 != nil && cases.countryInfo.iso3 != nil {
                         SharedData.Covid_cases_all.append(cases)
-                        
                     }
                 }
-                SharedData.Covid_cases = SharedData.Covid_cases_all as! [Covid_Data]
+                SharedData.Covid_cases = SharedData.Covid_cases_all
                 self?.Countries_CollectionView.reloadData()
                 break
             }
         }
-
+        
+        getData(url: API_URL_All_COUNTRIES_YESTERDAY) {
+            result in
+            switch result {
+            case .failure(let error):
+                debugPrint(error)
+                break
+            case .success(let data):
+                for cases in data {
+                    // filter invalid data
+                    if cases.countryInfo._id != nil && cases.countryInfo.iso2 != nil && cases.countryInfo.iso3 != nil {
+                        SharedData.Covid_cases_all_day_before.append(cases)
+                    }
+                }
+                break
+            }
+        }
     }
-
 }
 
 extension Countries_ViewController: UICollectionViewDelegate, UICollectionViewDataSource,  UISearchBarDelegate {
@@ -70,23 +84,32 @@ extension Countries_ViewController: UICollectionViewDelegate, UICollectionViewDa
         
         cell.layer.cornerRadius = 10
         cell.layer.masksToBounds = true
+
         
         cell.Country_label.text = SharedData.Covid_cases[indexPath.item].country
         
         return cell
     }
 
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionView, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        
+        return CGSize(width: collectionView.contentSize.width * 0.2, height: collectionView.contentSize.width * 0.2 )
+    }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as! CountryCell_CollectionViewCell
         
-        SharedData.CurrentCountry = cell.Country_label.text
+        SharedData.CurrentCountry = SharedData.Covid_cases_all.firstIndex(where: { (cases) -> Bool in
+            cases.country.elementsEqual(cell.Country_label.text!)
+          })
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         SharedData.Covid_cases.removeAll()
                  
         for item in SharedData.Covid_cases_all {
-            if (item.country.lowercased().starts(with: searchBar.text!.lowercased()) || item.code!.lowercased().starts(with: searchBar.text!.lowercased())) {
+            if (item.country.lowercased().starts(with: searchBar.text!.lowercased()) || item.countryInfo.iso2!.lowercased().starts(with: searchBar.text!.lowercased()) || item.countryInfo.iso3!.lowercased().starts(with: searchBar.text!.lowercased())) {
                 SharedData.Covid_cases.append(item)
             }
         }
@@ -96,5 +119,11 @@ extension Countries_ViewController: UICollectionViewDelegate, UICollectionViewDa
         }
         
         self.Countries_CollectionView.reloadData()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let backItem = UIBarButtonItem()
+        backItem.title = "Back"
+        navigationItem.backBarButtonItem = backItem // This will show in the next view controller being pushed
     }
 }
