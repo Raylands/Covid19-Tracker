@@ -50,13 +50,10 @@ extension Details_ViewController: UITableViewDelegate, UITableViewDataSource {
         else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "CurrentChartCell", for: indexPath) as! CurrentChart_TableViewCell
             
-            // Only with strong Outlet! Removing this line and/or using a weak outlet will crash
-            cell.current_pichart = PieChartView()
-            
-            cell.current_pichart.chartDescription?.enabled = false
-            cell.current_pichart.drawHoleEnabled = false
-            cell.current_pichart.rotationAngle = 0
-            cell.current_pichart.isUserInteractionEnabled = false
+            cell.current_piechart.chartDescription?.enabled = false
+            cell.current_piechart.drawHoleEnabled = false
+            cell.current_piechart.rotationAngle = 0
+            cell.current_piechart.isUserInteractionEnabled = false
             
             
             // RANDOM TEST DATA
@@ -71,15 +68,15 @@ extension Details_ViewController: UITableViewDelegate, UITableViewDataSource {
             
             dataSet.drawValuesEnabled = false
             
-            cell.current_pichart.data = PieChartData(dataSet: dataSet)
-            //cell.current_pichart.reloadInputViews()
+            cell.current_piechart.data = PieChartData(dataSet: dataSet)
+
             return cell
         }
         
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {	
-        return 90.0
+        return 200.0
     }
     
     override func viewWillDisappear(_ animated: Bool) {

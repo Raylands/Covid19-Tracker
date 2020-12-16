@@ -10,5 +10,5 @@ import UIKit
 import Charts
 
 class CurrentChart_TableViewCell: UITableViewCell {
-    @IBOutlet var current_pichart: PieChartView!
+    @IBOutlet weak var current_piechart: PieChartView!
 }
