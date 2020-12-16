@@ -35,10 +35,10 @@ class Bar_Chart_ViewController: UIViewController, ChartViewDelegate {
         
         //value of our pieChart
         
-        entries.append(BarChartDataEntry(value: Double(DeathNumberStored), label: "Deaths"))
+       // entries.append(BarChartDataEntry(value: Double(DeathNumberStored), label: "Deaths"))
         
-        entries.append(BarChartDataEntry(value: Double(ConfirmedNumberStored), label: "Confirmed"))
-        entries.append(BarChartDataEntry(value: Double(RecoveredNumberStored), label: "Recovered"))
+      //  entries.append(BarChartDataEntry(value: Double(ConfirmedNumberStored), label: "Confirmed"))
+      //  entries.append(BarChartDataEntry(value: Double(RecoveredNumberStored), label: "Recovered"))
         
         
         let set = BarChartDataSet(entries : entries)
