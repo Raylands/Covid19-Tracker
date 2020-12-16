@@ -25,7 +25,7 @@ class chart_transition : UIViewController, ChartViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        super.viewDidLoad()
+        
         pieChart.delegate = self
     
     }
@@ -43,10 +43,11 @@ class chart_transition : UIViewController, ChartViewDelegate {
         
         //value of our pieChart
         
-        entries.append(PieChartDataEntry(value: 30.0, label: "Healthy Food"))
-        entries.append(PieChartDataEntry(value: 20.0, label: "Soft Drink"))
-        entries.append(PieChartDataEntry(value: 10.0, label: "Water"))
-        entries.append(PieChartDataEntry(value: 40.0, label: "Home Meals"))
+        entries.append(PieChartDataEntry(value: Double(DeathNumberStored), label: "Deaths"))
+        
+        entries.append(PieChartDataEntry(value: Double(ConfirmedNumberStored), label: "Confirmed"))
+        entries.append(PieChartDataEntry(value: Double(RecoveredNumberStored), label: "Recovered"))
+        
         
         let set = PieChartDataSet(entries : entries)
         set.colors = ChartColorTemplates.colorful()

@@ -105,6 +105,8 @@ extension Details_ViewController: UITableViewDelegate, UITableViewDataSource {
             
             let vc = segue.destination as! chart_transition
             vc.DeathNumberStored = Int(SharedData.Covid_cases_all[SharedData.CurrentCountry!].deaths)
+            vc.ConfirmedNumberStored = Int(SharedData.Covid_cases_all[SharedData.CurrentCountry!].cases)
+            vc.RecoveredNumberStored = Int(SharedData.Covid_cases_all[SharedData.CurrentCountry!].recovered)
         }
             
         
@@ -118,9 +120,10 @@ extension Details_ViewController: UITableViewDelegate, UITableViewDataSource {
     @objc   func labelClicked (_ sender : Any) {
           
           print("UILabel clicked")
-      
+        self.performSegue(withIdentifier: "Chart_Transition_Segue", sender: self)
           
       }
 
+   
 }
 
