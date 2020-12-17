@@ -65,7 +65,7 @@ class Countries_ViewController: UIViewController {
     }
 }
 
-extension Countries_ViewController: UICollectionViewDelegate, UICollectionViewDataSource,  UISearchBarDelegate {
+extension Countries_ViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UISearchBarDelegate {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         
@@ -73,6 +73,14 @@ extension Countries_ViewController: UICollectionViewDelegate, UICollectionViewDa
     }
 
 
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+
+        let cellsAcross: CGFloat = 2
+        let spaceBetweenCells: CGFloat = 50
+        let dim = (collectionView.bounds.width - (cellsAcross-1) * spaceBetweenCells) / cellsAcross
+        return CGSize(width: dim, height: dim/1.5)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         return SharedData.Covid_cases.count
@@ -85,7 +93,10 @@ extension Countries_ViewController: UICollectionViewDelegate, UICollectionViewDa
         cell.layer.cornerRadius = 10
         cell.layer.masksToBounds = true
 
-        
+        let url = URL(string: SharedData.Covid_cases[indexPath.item].countryInfo.flag)
+        let data = try? Data(contentsOf: url!)
+        cell.Flag_image.image = UIImage(data: data!)
+
         cell.Country_label.text = SharedData.Covid_cases[indexPath.item].country
         
         return cell

@@ -75,8 +75,13 @@ extension Details_ViewController: UITableViewDelegate, UITableViewDataSource {
         
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {	
-        return 200.0
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.row == 0 {
+            return 150.0
+        }
+        else {
+            return 450.0
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
