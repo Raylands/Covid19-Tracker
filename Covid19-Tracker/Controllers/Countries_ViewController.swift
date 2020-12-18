@@ -102,18 +102,23 @@ extension Countries_ViewController: UICollectionViewDelegate, UICollectionViewDa
         return cell
     }
 
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionView, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        
-        return CGSize(width: collectionView.contentSize.width * 0.2, height: collectionView.contentSize.width * 0.2 )
-    }
-    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as! CountryCell_CollectionViewCell
         
-        SharedData.CurrentCountry = SharedData.Covid_cases_all.firstIndex(where: { (cases) -> Bool in
-            cases.country.elementsEqual(cell.Country_label.text!)
-          })
+        if SharedData.CurrentCountry != nil {
+            SharedData.CompareCountry = SharedData.Covid_cases_all.firstIndex(where: { (cases) -> Bool in
+                cases.country.elementsEqual(cell.Country_label.text!)
+              })
+            self.performSegue(withIdentifier: "seg_comparison", sender: self)
+            return
+        }
+        else {
+            SharedData.CurrentCountry = SharedData.Covid_cases_all.firstIndex(where: { (cases) -> Bool in
+                cases.country.elementsEqual(cell.Country_label.text!)
+              })
+            self.performSegue(withIdentifier: "seg_details", sender: self)
+            return
+        }
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {

@@ -20,6 +20,7 @@
 		4B9501F9252DD18B00786628 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B9501F8252DD18B00786628 /* Assets.xcassets */; };
 		4B9501FC252DD18B00786628 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B9501FA252DD18B00786628 /* LaunchScreen.storyboard */; };
 		4B950205252DD21400786628 /* Covid_data_Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B950204252DD21400786628 /* Covid_data_Model.swift */; };
+		4BB9C562258CF08900AED2CE /* Comparison_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB9C561258CF08900AED2CE /* Comparison_ViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		4B9501FB252DD18B00786628 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4B9501FD252DD18B00786628 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4B950204252DD21400786628 /* Covid_data_Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Covid_data_Model.swift; sourceTree = "<group>"; };
+		4BB9C561258CF08900AED2CE /* Comparison_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comparison_ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,13 +71,6 @@
 			path = Data;
 			sourceTree = "<group>";
 		};
-		4B4EC3DB255313800080BD29 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
 		4B9501E3252DD18900786628 = {
 			isa = PBXGroup;
 			children = (
@@ -101,7 +96,6 @@
 				4B9501FA252DD18B00786628 /* LaunchScreen.storyboard */,
 				4B9501F8252DD18B00786628 /* Assets.xcassets */,
 				4B950206252E06DD00786628 /* Controllers */,
-				4B4EC3DB255313800080BD29 /* Views */,
 				4B950207252E06F000786628 /* Models */,
 				4B10C4E325653F3000698055 /* Data */,
 				4B10C4E12565366E00698055 /* Cells */,
@@ -123,6 +117,7 @@
 			children = (
 				4B5724DF2552EF7D0013E40D /* Countries_ViewController.swift */,
 				4B4EC3E0255830700080BD29 /* Details_ViewController.swift */,
+				4BB9C561258CF08900AED2CE /* Comparison_ViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -215,6 +210,7 @@
 				4B5724E02552EF7D0013E40D /* Countries_ViewController.swift in Sources */,
 				4B10C4E525653F4200698055 /* SharedData.swift in Sources */,
 				4B4EC3DF25580C650080BD29 /* CountryCell_CollectionViewCell.swift in Sources */,
+				4BB9C562258CF08900AED2CE /* Comparison_ViewController.swift in Sources */,
 				4B9501F0252DD18900786628 /* AppDelegate.swift in Sources */,
 				4B4EC3E62558328D0080BD29 /* DetailsCell_TableViewCell.swift in Sources */,
 				4B9501F2252DD18900786628 /* SceneDelegate.swift in Sources */,

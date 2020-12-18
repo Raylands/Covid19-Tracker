@@ -1,33 +1,29 @@
 //
-//  Details_ViewController.swift
+//  Comparison_ViewController.swift
 //  Covid19-Tracker
 //
-//  Created by Marco Exner on 08.11.20.
+//  Created by Marco Exner on 18.12.20.
 //  Copyright © 2020 Marco Exner. All rights reserved.
 //
 
 import UIKit
 import Charts
 
-class Details_ViewController: UIViewController {
-    @IBOutlet weak var Navigation: UINavigationItem!
+class Comparison_ViewController: UIViewController {
+    @IBOutlet weak var country_label: UILabel!
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
 
-        self.title = SharedData.Covid_cases_all[SharedData.CurrentCountry!].country
-        
-        Navigation.rightBarButtonItem = UIBarButtonItem(title: "Compare", style: .plain, target: self, action: #selector(add_compare))
+        country_label.text = SharedData.Covid_cases_all[SharedData.CurrentCountry!].country + " vs. " + SharedData.Covid_cases_all[SharedData.CompareCountry!].country
         
         view.backgroundColor = .clear
-
-        
-        // Do any additional setup after loading the view.
     }
-    
+
 }
-extension Details_ViewController: UITableViewDelegate, UITableViewDataSource {
+
+
+extension Comparison_ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 2
     }
@@ -37,14 +33,17 @@ extension Details_ViewController: UITableViewDelegate, UITableViewDataSource {
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "StatsCell", for: indexPath) as! DetailsCell_TableViewCell
             
-            cell.confirmed_Total_Amount.text = String(SharedData.Covid_cases_all[SharedData.CurrentCountry!].cases)
-            cell.confirmed_Change.text = String("+\(SharedData.Covid_cases_all[SharedData.CurrentCountry!].todayCases)")
+            cell.confirmed_Total_Amount.text = String(SharedData.Covid_cases_all[SharedData.CompareCountry!].cases)
             
-            cell.Recovered_Total_Amount.text = String(SharedData.Covid_cases_all[SharedData.CurrentCountry!].recovered)
-            cell.Recovered_Change.text = String("+\(SharedData.Covid_cases_all[SharedData.CurrentCountry!].todayRecovered)")
+            cell.confirmed_Change.text = String("+\(SharedData.Covid_cases_all[SharedData.CompareCountry!].todayCases)")
             
-            cell.Deaths_Total_Amount.text = String(SharedData.Covid_cases_all[SharedData.CurrentCountry!].deaths)
-            cell.Deaths_Change.text = String("+\(SharedData.Covid_cases_all[SharedData.CurrentCountry!].todayDeaths)")
+            cell.Recovered_Total_Amount.text = String(SharedData.Covid_cases_all[SharedData.CompareCountry!].recovered)
+            
+            cell.Recovered_Change.text = String("+\(SharedData.Covid_cases_all[SharedData.CompareCountry!].todayRecovered)")
+            
+            cell.Deaths_Total_Amount.text = String(SharedData.Covid_cases_all[SharedData.CompareCountry!].deaths)
+            
+            cell.Deaths_Change.text = String("+\(SharedData.Covid_cases_all[SharedData.CompareCountry!].todayDeaths)")
             return cell
         }
         else {
@@ -85,13 +84,6 @@ extension Details_ViewController: UITableViewDelegate, UITableViewDataSource {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        SharedData.CurrentCountry = nil
-    }
-    
-    @objc func add_compare() -> Void {
-        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "main_view") as! Countries_ViewController
-
-        self.present(secondViewController, animated: true)
+        SharedData.CompareCountry = nil
     }
 }
-

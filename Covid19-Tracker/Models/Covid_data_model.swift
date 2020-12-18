@@ -229,5 +229,4 @@ func getData_old(url: String) throws -> [Covid_Data]? {
    "longitude": 20.168331,
    "lastChange": "2020-10-06T17:28:24+02:00",
    "lastUpdate": "2020-10-07T12:15:03+02:00"
- },
- */
+ }*/
