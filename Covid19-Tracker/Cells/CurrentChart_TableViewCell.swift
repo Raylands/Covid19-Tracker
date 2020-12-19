@@ -10,6 +10,5 @@ import UIKit
 import Charts
 
 class CurrentChart_TableViewCell: UITableViewCell {
-    @IBOutlet weak var current_pichart: PieChartView!
-    @IBOutlet weak var noteModificationTimeLabel: UILabel!
+    @IBOutlet weak var current_piechart: PieChartView!
 }
