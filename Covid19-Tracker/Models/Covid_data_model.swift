@@ -29,8 +29,85 @@ struct Covid_Data: Codable {
 }
 
 
+struct countryinfo: Codable {
+    var _id: Int?
+    var iso2: String?
+    var iso3: String?
+    var lat: Float
+    var long: Float
+    var flag: String
+}
 
-func getData(url: String, completiton: @escaping(Result<[Covid_Data],APIError>) -> Void ) {
+struct Covid_Data_new: Codable {
+    var country: String
+    var countryInfo: countryinfo
+    var cases: Int
+    var todayCases: Int
+    var deaths: Int
+    var todayDeaths: Int
+    var recovered: Int
+    var todayRecovered: Int
+    var active: Int
+    var critical: Int
+    var casesPerOneMillion: Double
+    var deathsPerOneMillion: Double
+    var tests: Int
+    var testsPerOneMillion: Double
+    var population: Int
+    var continent: String
+    var oneCasePerPeople: Int
+    var oneDeathPerPeople: Int
+    var activePerOneMillion: Double
+    var recoveredPerOneMillion: Double
+    var criticalPerOneMillion: Double
+}
+
+
+/*
+ country    string
+ province    [{
+ confirmed    integer
+ recovered    integer
+ deaths    integer
+ active    integer
+ }]
+ latitude    number($float)
+ longitude    number($float)
+ date    string
+ */
+
+
+func getData(url: String, completiton: @escaping(Result<[Covid_Data_new],APIError>) -> Void ) {
+    guard let url_tmp = URL.init(string: url) else {
+        completiton(.failure(.invalidURL))
+        return
+    }
+    
+    URLSession.shared.dataTask(with: url_tmp) {data, _, _ in
+        guard let jsonData = data else {
+            completiton(.failure(.noDataReceived))
+            return
+        }
+        do{
+            let response = try JSONDecoder().decode([Covid_Data_new].self, from: jsonData)
+            if (response.isEmpty) {
+                completiton(.failure(.noDataReceived))
+                return
+            }
+            DispatchQueue.main.async {
+            completiton(.success(response))
+           	}
+
+            return
+        } catch {
+            completiton(.failure(.notAbletoUnpack))
+            return
+        }
+        
+    }.resume()
+}
+
+/*func getData(url: String, completiton: @escaping(Result<[Covid_Data],APIError>) -> Void ) {
     guard let url_tmp = URL.init(string: url) else {
         completiton(.failure(.invalidURL))
         return
@@ -46,7 +123,7 @@ func getData(url: String, completiton: @escaping(Result<[Covid_Data],APIError>) 
             let response = try JSONDecoder().decode([Covid_Data].self, from: jsonData)
             DispatchQueue.main.async {
             completiton(.success(response))
-           	}
+               }
 
             return
         } catch {
@@ -56,7 +133,7 @@ func getData(url: String, completiton: @escaping(Result<[Covid_Data],APIError>) 
         }
         
     }.resume()
-}
+}*/
 
 /*
 func getData_old(url: String) throws -> [Covid_Data]? {
