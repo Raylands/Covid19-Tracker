@@ -15,8 +15,7 @@ class Comparison_ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        country_label.text = SharedData.Covid_cases_all[SharedData.CurrentCountry!].country + " vs. " + SharedData.Covid_cases_all[SharedData.CompareCountry!].country
-        
+        country_label.text = SharedData.Covid_cases_all[SharedData.CurrentCountry!].country + " vs. " + SharedData.Covid_cases_all[SharedData.CompareCountry!].country 
         view.backgroundColor = .clear
     }
 
@@ -35,15 +34,17 @@ extension Comparison_ViewController: UITableViewDelegate, UITableViewDataSource 
             
             cell.confirmed_Total_Amount.text = String(SharedData.Covid_cases_all[SharedData.CompareCountry!].cases)
             
-            cell.confirmed_Change.text = String("+\(SharedData.Covid_cases_all[SharedData.CompareCountry!].todayCases)")
+            cell.confirmed_Change.text = String(SharedData.Covid_cases_all[SharedData.CurrentCountry!].cases - SharedData.Covid_cases_all[SharedData.CompareCountry!].cases)
+            
+           
             
             cell.Recovered_Total_Amount.text = String(SharedData.Covid_cases_all[SharedData.CompareCountry!].recovered)
             
-            cell.Recovered_Change.text = String("+\(SharedData.Covid_cases_all[SharedData.CompareCountry!].todayRecovered)")
+            cell.Recovered_Change.text = String(SharedData.Covid_cases_all[SharedData.CurrentCountry!].recovered - SharedData.Covid_cases_all[SharedData.CompareCountry!].recovered)
             
             cell.Deaths_Total_Amount.text = String(SharedData.Covid_cases_all[SharedData.CompareCountry!].deaths)
             
-            cell.Deaths_Change.text = String("+\(SharedData.Covid_cases_all[SharedData.CompareCountry!].todayDeaths)")
+            cell.Deaths_Change.text = String(SharedData.Covid_cases_all[SharedData.CurrentCountry!].deaths - SharedData.Covid_cases_all[SharedData.CompareCountry!].deaths)
             return cell
         }
         else {
@@ -52,21 +53,25 @@ extension Comparison_ViewController: UITableViewDelegate, UITableViewDataSource 
             cell.current_piechart.chartDescription?.enabled = false
             cell.current_piechart.drawHoleEnabled = false
             cell.current_piechart.rotationAngle = 0
-            cell.current_piechart.isUserInteractionEnabled = false
+           // cell.current_piechart.isUserInteractionEnabled = false
             
             
-            // RANDOM TEST DATA
-            var entries: [PieChartDataEntry] = Array()
-            entries.append(PieChartDataEntry(value: 50.0, label: "Takeout"))
-            entries.append(PieChartDataEntry(value: 30.0, label: "Healthy Food"))
-            entries.append(PieChartDataEntry(value: 20.0, label: "Soft Drink"))
-            entries.append(PieChartDataEntry(value: 10.0, label: "Water"))
-            entries.append(PieChartDataEntry(value: 40.0, label: "Home Meals"))
+                        var entries: [PieChartDataEntry] = Array()
+            entries.append(PieChartDataEntry(value: Double(SharedData.Covid_cases_all[SharedData.CurrentCountry!].cases), label: String("Confirmed\(SharedData.Covid_cases_all[SharedData.CurrentCountry!].cases)")))
+            
+            entries.append(PieChartDataEntry(value:Double (SharedData.Covid_cases_all[SharedData.CurrentCountry!].recovered), label: String("Recovered\(SharedData.Covid_cases_all[SharedData.CurrentCountry!].recovered)")))
+            
+            entries.append(PieChartDataEntry(value: Double(SharedData.Covid_cases_all[SharedData.CurrentCountry!].deaths), label:String ("Deaths \(SharedData.Covid_cases_all[SharedData.CurrentCountry!].deaths)")))
+            
+            
             
             let dataSet = PieChartDataSet(entries: entries, label: "")
-            
+            var colors : [UIColor] = []
+            colors.append(UIColor.orange)
+            colors.append(UIColor.green)
+            colors.append(UIColor.red)
             dataSet.drawValuesEnabled = false
-            
+            dataSet.colors = colors
             cell.current_piechart.data = PieChartData(dataSet: dataSet)
 
             return cell

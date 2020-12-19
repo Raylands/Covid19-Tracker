@@ -53,23 +53,30 @@ extension Details_ViewController: UITableViewDelegate, UITableViewDataSource {
             cell.current_piechart.chartDescription?.enabled = false
             cell.current_piechart.drawHoleEnabled = false
             cell.current_piechart.rotationAngle = 0
-            cell.current_piechart.isUserInteractionEnabled = false
+            //cell.current_piechart.isUserInteractionEnabled = false
             
             
-            // RANDOM TEST DATA
-            var entries: [PieChartDataEntry] = Array()
-            entries.append(PieChartDataEntry(value: 50.0, label: "Takeout"))
-            entries.append(PieChartDataEntry(value: 30.0, label: "Healthy Food"))
-            entries.append(PieChartDataEntry(value: 20.0, label: "Soft Drink"))
-            entries.append(PieChartDataEntry(value: 10.0, label: "Water"))
-            entries.append(PieChartDataEntry(value: 40.0, label: "Home Meals"))
+                        var entries: [PieChartDataEntry] = Array()
+            entries.append(PieChartDataEntry(value: Double(SharedData.Covid_cases_all[SharedData.CurrentCountry!].cases), label: String("Confirmed\(SharedData.Covid_cases_all[SharedData.CurrentCountry!].cases)")))
+            
+            entries.append(PieChartDataEntry(value:Double (SharedData.Covid_cases_all[SharedData.CurrentCountry!].recovered), label: String("Recovered\(SharedData.Covid_cases_all[SharedData.CurrentCountry!].recovered)")))
+            
+            entries.append(PieChartDataEntry(value: Double(SharedData.Covid_cases_all[SharedData.CurrentCountry!].deaths), label:String ("Deaths \(SharedData.Covid_cases_all[SharedData.CurrentCountry!].deaths)")))
+            
             
             let dataSet = PieChartDataSet(entries: entries, label: "")
-            
+            var colors : [UIColor] = []
+            let format = NumberFormatter()
+            format.numberStyle = .none
+            let formatter = DefaultValueFormatter(formatter : format)
+            colors.append(UIColor.orange)
+            colors.append(UIColor.green)
+            colors.append(UIColor.red)
+            dataSet.colors = colors
             dataSet.drawValuesEnabled = false
             
             cell.current_piechart.data = PieChartData(dataSet: dataSet)
-
+            cell.current_piechart.data?.setValueFormatter(formatter)
             return cell
         }
     }

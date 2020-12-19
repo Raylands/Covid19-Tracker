@@ -75,10 +75,18 @@ extension Countries_ViewController: UICollectionViewDelegate, UICollectionViewDa
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 
-        let cellsAcross: CGFloat = 2
-        let spaceBetweenCells: CGFloat = 50
-        let dim = (collectionView.bounds.width - (cellsAcross-1) * spaceBetweenCells) / cellsAcross
-        return CGSize(width: dim, height: dim/1.5)
+        if UIDevice.current.orientation.isLandscape {
+            let cellsAcross: CGFloat = 4
+            let spaceBetweenCells: CGFloat = 50
+            let dim = (collectionView.bounds.width - (cellsAcross-1) * spaceBetweenCells) / cellsAcross
+            return CGSize(width: dim, height: dim/1.5)
+        }
+        else {
+            let cellsAcross: CGFloat = 2
+            let spaceBetweenCells: CGFloat = 50
+            let dim = (collectionView.bounds.width - (cellsAcross-1) * spaceBetweenCells) / cellsAcross
+            return CGSize(width: dim, height: dim/1.5)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -120,6 +128,12 @@ extension Countries_ViewController: UICollectionViewDelegate, UICollectionViewDa
             return
         }
     }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        Countries_CollectionView.collectionViewLayout.invalidateLayout()
+    }
+
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         SharedData.Covid_cases.removeAll()
