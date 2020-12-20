@@ -27,39 +27,42 @@ class Countries_ViewController: UIViewController {
         
         Search_Bar.delegate = self;
         
-        getData(url: API_URL_All_COUNTRIES_TODAY) {
-            [weak self] result in
-            switch result {
-            case .failure(let error):
-                debugPrint(error)
-                break
-            case .success(let data):
-                for cases in data {
-                    // filter invalid data
-                    if cases.countryInfo._id != nil && cases.countryInfo.iso2 != nil && cases.countryInfo.iso3 != nil {
-                        SharedData.Covid_cases_all.append(cases)
+        if (!SharedData.initialized_data) {
+            getData(url: API_URL_All_COUNTRIES_TODAY) {
+                [weak self] result in
+                switch result {
+                case .failure(let error):
+                    debugPrint(error)
+                    break
+                case .success(let data):
+                    for cases in data {
+                        // filter invalid data
+                        if cases.countryInfo._id != nil && cases.countryInfo.iso2 != nil && cases.countryInfo.iso3 != nil {
+                            SharedData.Covid_cases_all.append(cases)
+                        }
                     }
+                    SharedData.Covid_cases = SharedData.Covid_cases_all
+                    self?.Countries_CollectionView.reloadData()
+                    break
                 }
-                SharedData.Covid_cases = SharedData.Covid_cases_all
-                self?.Countries_CollectionView.reloadData()
-                break
             }
-        }
-        
-        getData(url: API_URL_All_COUNTRIES_YESTERDAY) {
-            result in
-            switch result {
-            case .failure(let error):
-                debugPrint(error)
-                break
-            case .success(let data):
-                for cases in data {
-                    // filter invalid data
-                    if cases.countryInfo._id != nil && cases.countryInfo.iso2 != nil && cases.countryInfo.iso3 != nil {
-                        SharedData.Covid_cases_all_day_before.append(cases)
+            
+            getData(url: API_URL_All_COUNTRIES_YESTERDAY) {
+                result in
+                switch result {
+                case .failure(let error):
+                    debugPrint(error)
+                    break
+                case .success(let data):
+                    for cases in data {
+                        // filter invalid data
+                        if cases.countryInfo._id != nil && cases.countryInfo.iso2 != nil && cases.countryInfo.iso3 != nil {
+                            SharedData.Covid_cases_all_day_before.append(cases)
+                            SharedData.initialized_data = true
+                        }
                     }
+                    break
                 }
-                break
             }
         }
     }
@@ -101,10 +104,16 @@ extension Countries_ViewController: UICollectionViewDelegate, UICollectionViewDa
         cell.layer.cornerRadius = 10
         cell.layer.masksToBounds = true
 
-        let url = URL(string: SharedData.Covid_cases[indexPath.item].countryInfo.flag)
-        let data = try? Data(contentsOf: url!)
-        cell.Flag_image.image = UIImage(data: data!)
-
+        if let flag = SharedData.flags[SharedData.Covid_cases[indexPath.item].country] {
+            cell.Flag_image.image = flag
+        }
+        else {
+            let url = URL(string: SharedData.Covid_cases[indexPath.item].countryInfo.flag)
+            let data = try? Data(contentsOf: url!)
+            SharedData.flags[SharedData.Covid_cases[indexPath.item].country] = UIImage(data: data!)
+            cell.Flag_image.image = UIImage(data: data!)
+        }
+        
         cell.Country_label.text = SharedData.Covid_cases[indexPath.item].country
         
         return cell
