@@ -122,7 +122,7 @@ extension Details_ViewController: UITableViewDelegate, UITableViewDataSource {
             cell.current_piechart.legend.xEntrySpace = 10
             
             cell.current_piechart.drawEntryLabelsEnabled = false
-            cell.current_piechart.usePercentValuesEnabled = true
+            cell.current_piechart.usePercentValuesEnabled = false
             
             var entries: [PieChartDataEntry] = []
             entries.append(PieChartDataEntry(value: Double(SharedData.Covid_cases_all[SharedData.CurrentCountry!].active), label: "Active"))
@@ -164,14 +164,15 @@ extension Details_ViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         SharedData.CurrentCountry = nil
     }
     
     @objc func add_compare() -> Void {
         let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "main_view") as! Countries_ViewController
-
+        
+        SharedData.Covid_cases = SharedData.Covid_cases_all
         self.present(secondViewController, animated: true)
     }
 }
