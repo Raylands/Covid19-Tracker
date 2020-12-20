@@ -51,12 +51,12 @@ extension Comparison_ViewController: UITableViewDelegate, UITableViewDataSource 
             let cell = tableView.dequeueReusableCell(withIdentifier: "CurrentChartCell", for: indexPath) as! CurrentChart_TableViewCell
             
             cell.current_piechart.chartDescription?.enabled = false
-            cell.current_piechart.drawHoleEnabled = false
+            cell.current_piechart.drawHoleEnabled = true
             cell.current_piechart.rotationAngle = 0
-           // cell.current_piechart.isUserInteractionEnabled = false
+            // cell.current_piechart.isUserInteractionEnabled = false
             
             
-                        var entries: [PieChartDataEntry] = Array()
+            var entries: [PieChartDataEntry] = Array()
             entries.append(PieChartDataEntry(value: Double(SharedData.Covid_cases_all[SharedData.CurrentCountry!].cases), label: String("Confirmed\(SharedData.Covid_cases_all[SharedData.CurrentCountry!].cases)")))
             
             entries.append(PieChartDataEntry(value:Double (SharedData.Covid_cases_all[SharedData.CurrentCountry!].recovered), label: String("Recovered\(SharedData.Covid_cases_all[SharedData.CurrentCountry!].recovered)")))

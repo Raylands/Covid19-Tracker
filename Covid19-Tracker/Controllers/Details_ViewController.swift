@@ -37,14 +37,21 @@ extension Details_ViewController: UITableViewDelegate, UITableViewDataSource {
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "StatsCell", for: indexPath) as! DetailsCell_TableViewCell
             
-            cell.confirmed_Total_Amount.text = String(SharedData.Covid_cases_all[SharedData.CurrentCountry!].cases)
-            cell.confirmed_Change.text = String("+\(SharedData.Covid_cases_all[SharedData.CurrentCountry!].todayCases)")
+            let formatter = NumberFormatter()
+            formatter.numberStyle = NumberFormatter.Style.decimal
+            formatter.locale = Locale(identifier: "de_DE")
             
-            cell.Recovered_Total_Amount.text = String(SharedData.Covid_cases_all[SharedData.CurrentCountry!].recovered)
-            cell.Recovered_Change.text = String("+\(SharedData.Covid_cases_all[SharedData.CurrentCountry!].todayRecovered)")
+            cell.confirmed_Total_Amount.text = formatter.string(for: SharedData.Covid_cases_all[SharedData.CurrentCountry!].cases)
             
-            cell.Deaths_Total_Amount.text = String(SharedData.Covid_cases_all[SharedData.CurrentCountry!].deaths)
-            cell.Deaths_Change.text = String("+\(SharedData.Covid_cases_all[SharedData.CurrentCountry!].todayDeaths)")
+            cell.confirmed_Change.text = "+" +  formatter.string(for:SharedData.Covid_cases_all[SharedData.CurrentCountry!].todayCases)!
+            
+            cell.Recovered_Total_Amount.text = formatter.string(for:SharedData.Covid_cases_all[SharedData.CurrentCountry!].recovered)
+            
+            cell.Recovered_Change.text = "+" +  formatter.string(for:SharedData.Covid_cases_all[SharedData.CurrentCountry!].todayRecovered)!
+            
+            cell.Deaths_Total_Amount.text = formatter.string(for:SharedData.Covid_cases_all[SharedData.CurrentCountry!].deaths)
+            
+            cell.Deaths_Change.text = "+" +  formatter.string(for: SharedData.Covid_cases_all[SharedData.CurrentCountry!].todayDeaths)!
             return cell
         }
         else {

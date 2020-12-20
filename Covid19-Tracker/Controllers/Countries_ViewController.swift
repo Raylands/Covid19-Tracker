@@ -140,7 +140,9 @@ extension Countries_ViewController: UICollectionViewDelegate, UICollectionViewDa
                  
         for item in SharedData.Covid_cases_all {
             if (item.country.lowercased().starts(with: searchBar.text!.lowercased()) || item.countryInfo.iso2!.lowercased().starts(with: searchBar.text!.lowercased()) || item.countryInfo.iso3!.lowercased().starts(with: searchBar.text!.lowercased())) {
-                SharedData.Covid_cases.append(item)
+                if  !SharedData.Covid_cases.contains(item) {
+                    SharedData.Covid_cases.append(item)
+                }
             }
         }
              

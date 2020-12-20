@@ -29,7 +29,11 @@ struct Covid_Data: Codable {
 }
 
 
-struct countryinfo: Codable {
+struct countryinfo: Codable, Equatable {
+    static func ==(lhs:countryinfo, rhs:countryinfo) -> Bool {
+        return lhs.flag == rhs.flag
+    }
+    
     var _id: Int?
     var iso2: String?
     var iso3: String?
@@ -38,7 +42,11 @@ struct countryinfo: Codable {
     var flag: String
 }
 
-struct Covid_Data_new: Codable {
+struct Covid_Data_new: Codable, Equatable {
+    static func ==(lhs:Covid_Data_new, rhs:Covid_Data_new) -> Bool {
+        return lhs.country == rhs.country
+    }
+    
     var country: String
     var countryInfo: countryinfo
     var cases: Int
