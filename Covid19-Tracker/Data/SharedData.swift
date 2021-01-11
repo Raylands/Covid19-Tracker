@@ -13,8 +13,8 @@ struct SharedData{
     static var Covid_cases_all: [Covid_Data_new] = []
     static var Covid_cases_all_day_before: [Covid_Data_new] = []
     static var Covid_cases: [Covid_Data_new] = []
-    static var CurrentCountry: Int?
-    static var CompareCountry: Int?
+    static var CurrentCountry: Int? = nil
+    static var CompareCountry: Int? = nil
     static var initialized_data: Bool = false
     static var flags = [String: UIImage]()
 }

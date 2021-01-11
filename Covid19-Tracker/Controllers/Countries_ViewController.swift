@@ -15,7 +15,7 @@ private let API_URL_All_COUNTRIES_YESTERDAY = "https://disease.sh/v3/covid-19/co
 class Countries_ViewController: UIViewController {
 
     @IBOutlet weak var Search_Bar: UISearchBar!
-    @IBOutlet var Countries_CollectionView: UICollectionView!
+    @IBOutlet weak var Countries_CollectionView: UICollectionView!
     
     override func viewDidLoad() {
             
