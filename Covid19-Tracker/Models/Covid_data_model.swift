@@ -103,7 +103,7 @@ func getData(url: String, completiton: @escaping(Result<[Covid_Data_new],APIErro
                 return
             }
             DispatchQueue.main.async {
-            completiton(.success(response))
+                completiton(.success(response))
            	}
 
             return
